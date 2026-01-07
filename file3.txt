@@ -1,0 +1,21 @@
+METHOD field_check_no_change_allowed.
+ 
+***********************************************************************
+ 
+    " This method checks if the field has changed and updates the message table if it has.
+ 
+    IF iv_old = iv_new.
+      RETURN.   "No Change so no problem.
+    ENDIF.
+    DATA(lv_label) = me->get_label( iv_new ).
+ 
+**Latest Change
+*    " You cannot change header field '&1'
+    MESSAGE e002(zpl_e003) WITH lv_label INTO DATA(lv_msg).
+ 
+    APPEND VALUE #(
+         messagetype = zcl_ca_pbf=>cs_severity-error
+          messagetext = lv_msg
+      ) TO ct_messages.
+*
+ENDMETHOD.
