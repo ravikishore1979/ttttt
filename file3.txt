@@ -11,7 +11,7 @@ METHOD field_check_no_change_allowed.
  
 **Latest Change
 *    " You cannot change header field '&1'
-    MESSAGE e002(zpl_e003) WITH lv_label INTO DATA(lv_msg).
+*    MESSAGE e002(zpl_e003) WITH lv_label INTO DATA(lv_msg).
  
     APPEND VALUE #(
          messagetype = zcl_ca_pbf=>cs_severity-error
