@@ -9,9 +9,9 @@ METHOD field_check_no_change_allowed.
     ENDIF.
     DATA(lv_label) = me->get_label( iv_new ).
  
-**Latest Change
 *    " You cannot change header field '&1'
-    MESSAGE e002(zpl_e003) WITH lv_label INTO DATA(lv_msg).
+* Latest Change
+    MESSAGE e002(zpl_e003) WITH lv_label INTO DATA(lv_msg).  *commented same line
  
     APPEND VALUE #(
          messagetype = zcl_ca_pbf=>cs_severity-error
